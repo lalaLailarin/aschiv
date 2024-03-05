@@ -19,3 +19,11 @@
         specular_light_intensity += std::pow(std::max(0.f, -reflect(-light_dir, N)*dir), material.specular_exponent);
     }
 //yes
+  std::ofstream ofs("./out.ppm", std::ios::binary);
+    ofs << "P6\n" << width << " " << height << "\n255\n";
+    for (vec3 &color : framebuffer) {
+        float max = std::max(1.f, std::max(color[0], std::max(color[1], color[2])));
+        for (int chan : {0,1,2})
+            ofs << (char)(255 *  color[chan]/max);
+    }
+    return 0;
