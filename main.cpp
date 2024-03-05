@@ -18,3 +18,4 @@
         diffuse_light_intensity  += std::max(0.f, light_dir*N);
         specular_light_intensity += std::pow(std::max(0.f, -reflect(-light_dir, N)*dir), material.specular_exponent);
     }
+//yes
